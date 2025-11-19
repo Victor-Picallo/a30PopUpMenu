@@ -3,6 +3,7 @@ package com.example.a30popupmenu;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(v -> {
+            showPopupMenu(v);
         });
     }
 
@@ -48,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //Este metodo tiene que saltar cuando clickamos en la imagen del boton
     public void showPopupMenu(View view) {
         PopupMenu popup = new PopupMenu(MainActivity.this, view);
         popup.inflate(R.menu.menu_popup);
